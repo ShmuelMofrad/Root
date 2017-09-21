@@ -36,14 +36,14 @@
 	
 	<issueManagement>
 		<system>GitHub</system>
-		<url>https://github.com/ShmuelMofrad/Root.git/issues</url>
+		<url>https://github.com/ShmuelMofrad/Root/issues</url>
 	</issueManagement>
 
 	<licenses>
 		<license>
 			<name>GNU GENERAL PUBLIC LICENSE Version 2, June 1991</name>
 			<distribution>repo</distribution>
-			<url>https://github.com/ShmuelMofrad/Root.git/blob/master/LICENSE</url>
+			<url>https://github.com/ShmuelMofrad/Root/blob/master/LICENSE</url>
 		</license>
 	</licenses>
 
