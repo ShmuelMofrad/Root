@@ -1,0 +1,149 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>one.unus</groupId>
+	<artifactId>parent-pom</artifactId>
+	<version>1.0.0</version>
+	<packaging>pom</packaging>
+
+	<name>Root</name>
+	<url>http://unus.one</url>
+	<description>The Root is unus.one parent-pom. general settings for all unus.one's projects</description>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<organization>
+		<name>unus.one</name>
+		<url>http://unus.one</url>
+	</organization>
+
+	<developers>
+		<developer>
+			<name>Shmuel Mofrad</name>
+			<email>mofrad@unus.one</email>
+		</developer>
+	</developers>
+
+	<scm>
+		<connection>scm:git@github.com:ShmuelMofrad/Root.git</connection>
+		<developerConnection>scm:git@github.com:ShmuelMofrad/Root.git</developerConnection>
+		<url>https://github.com/ShmuelMofrad/Root.git</url>
+		<tag>HEAD</tag>
+	</scm>
+	
+	<issueManagement>
+		<system>GitHub</system>
+		<url>https://github.com/ShmuelMofrad/Root.git/issues</url>
+	</issueManagement>
+
+	<licenses>
+		<license>
+			<name>GNU GENERAL PUBLIC LICENSE Version 2, June 1991</name>
+			<distribution>repo</distribution>
+			<url>https://github.com/ShmuelMofrad/Root.git/blob/master/LICENSE</url>
+		</license>
+	</licenses>
+
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<!-- The Source Plugin creates a jar archive of the source files of 
+						the current project. The jar file is, by default, created in the project's 
+						target directory. https://maven.apache.org/plugins/maven-source-plugin/ -->
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-source-plugin</artifactId>
+					<version>3.0.0</version>
+					<executions>
+						<execution>
+							<!-- Installing the sources using a phase binding https://maven.apache.org/plugins/maven-source-plugin/usage.html -->
+							<id>attach-sources</id>
+							<phase>verify</phase>
+							<goals>
+								<goal>jar-no-fork</goal>
+								<goal>test-jar-no-fork</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<!-- The Javadoc Plugin uses the Javadoc tool to generate javadocs for 
+						the specified project. https://maven.apache.org/plugins/maven-javadoc-plugin/ -->
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-javadoc-plugin</artifactId>
+					<version>2.10.3</version>
+					<executions>
+						<execution>
+							<id>attach-javadocs</id>
+							<phase>package</phase>
+							<goals>
+								<goal>jar</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<!-- This plugin provides the capability to build jars. https://maven.apache.org/plugins/maven-jar-plugin/ -->
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jar-plugin</artifactId>
+					<version>3.0.0</version>
+					<configuration>
+						<archive>
+							<manifest>
+								<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+							</manifest>
+							<manifestEntries>
+								<Build-Time>${maven.build.timestamp}</Build-Time>
+								<Build-Number>${build.number}</Build-Number>
+							</manifestEntries>
+						</archive>
+					</configuration>
+				</plugin>
+				<plugin>
+					<!-- The WAR Plugin is responsible for collecting all artifact dependencies, 
+						classes and resources of the web application and packaging them into a web 
+						application archive. https://maven.apache.org/plugins/maven-war-plugin/ -->
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-war-plugin</artifactId>
+					<version>2.6</version>
+					<configuration>
+						<archive>
+							<manifest>
+								<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+							</manifest>
+							<manifestEntries>
+								<Build-Time>${maven.build.timestamp}</Build-Time>
+								<Build-Number>${build.number}</Build-Number>
+							</manifestEntries>
+						</archive>
+					</configuration>
+				</plugin>
+				<plugin>
+					<!-- This plugin generates Java EE Enterprise Archive (EAR) file. It 
+						can also generate the deployment descriptor file (e.g. application.xml). 
+						http://maven.apache.org/plugins/maven-ear-plugin/ -->
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-ear-plugin</artifactId>
+					<version>1.9</version>
+					<configuration>
+						<archive>
+							<manifest>
+								<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+							</manifest>
+							<manifestEntries>
+								<Build-Time>${maven.build.timestamp}</Build-Time>
+								<Build-Number>${build.number}</Build-Number>
+							</manifestEntries>
+						</archive>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+
+</project>
